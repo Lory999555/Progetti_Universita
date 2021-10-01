@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Benvenuto su EUROLINES</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <style type="text/css">
+            #locator{position: absolute; visibility: visible; left:500px;
+                     top:500px; height: 5000px; width: 5000px; z-index: 200;}
+            </style>
+        </h:head>
+        <h:body>
+            <ui:composition template="./template.xhtml">
+                <ui:define name = "top" >
+                    <f:view>
+                        <h:form>
+                            <style>
+                            body{
+                                background-image: url(img/background.png);
+                            }
+                        </style>
+                        <p:messages id="messages" showDetail="true" autoUpdate="true"/>
+
+                        <p:imageSwitch effect="fade" id="fadeEffect">
+                            <img src="img/pullman1.jpg" id="image" />
+                            <img src="img/pullman2.jpg" id="image" />
+                            <img src="img/pullman3.jpg" id="image" />
+                        </p:imageSwitch>
+                        </h:form>
+                        <h:form>
+                        <p:commandButton value="Cerca Pullman"
+                                         action="#{cercaPullmanController.prepareCreate()}">
+                        </p:commandButton>
+                        <p:commandButton value="Profilo" style="display:#{profiloController.displayValue()}"
+                                         action="#{profiloController.prepareCreate()}">
+                        </p:commandButton>
+                        <p:commandButton id="messaggi" style="display:#{profiloController.displayValue()}"
+                                         value="Messaggi(#{loginController.numMessaggi})" action="#{messaggiController.prepareCreate()}">
+                        </p:commandButton>
+                        <p:commandButton value="Logout" style="display:#{profiloController.displayValue()}"
+                                         action="#{schermataInizialeController.logout()}"> 
+                        </p:commandButton>
+                        <p:commandButton value="Home" style="display:#{profiloController.displayNoValue()}"
+                                         action="#{schermataInizialeController.logout()}">
+                        </p:commandButton>
+
+                    </h:form>
+                </f:view>
+        </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

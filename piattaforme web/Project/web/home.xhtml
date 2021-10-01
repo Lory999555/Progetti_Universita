@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+
+    <h:head>
+        <title>HOME</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <style type="text/css">
+            #locator{position: absolute; visibility: visible; left:500px;
+                     top:500px; height: 5000px; width: 5000px; z-index: 200;}
+            </style>
+        </h:head>
+        <h:body>
+            <ui:composition template="./template.xhtml">
+                <ui:define name = "top" >
+                    <f:view>
+                        <h:form>
+                            <p:messages id="messages" showDetail="true"/>
+                        <p:imageSwitch effect="fade" id="fadeEffect">
+                            <img src="img/pullman1.jpg" id="image" />
+                            <img src="img/pullman2.jpg" id="image" />
+                            <img src="img/pullman3.jpg" id="image" />
+                        </p:imageSwitch>
+                    </h:form>
+                    <h:form>
+                         <div id="right" class="right">
+                            <a href="https:www.facebook.com/EurolinesOrganisation/">
+                                 <img src="img/face1.png" id="image" />
+                            </a>
+                           <ui:insert name="right"></ui:insert>
+                        </div>
+                        <style>
+                            body{
+                                background-image: url(img/background.png);
+                            }
+                        </style>
+                        <p:commandButton value="Start"
+                                         action="login">
+                        </p:commandButton>
+                        <p:commandButton value="Schermata Iniziale"
+                            action="schermataIniziale">
+                        </p:commandButton>
+                    </h:form>
+                </f:view>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

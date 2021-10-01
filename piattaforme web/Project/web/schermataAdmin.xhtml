@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Benvenuto sul sito</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <style type="text/css">
+            #locator{position: absolute; visibility: visible; left:500px;
+                     top:500px; height: 5000px; width: 5000px; z-index: 200;}
+            </style>
+        </h:head>
+        <h:body>
+            <f:view>
+                <h:form>
+                    <style>
+                    body{
+                        background-image: url(img/background.png);
+                    }
+                </style>
+                <p:messages id="messages" showDetail="true" autoUpdate="true"/>
+
+
+
+                <p:imageSwitch effect="fade" id="fadeEffect">
+                    <img src="img/pullman11.jpg" id="image" />
+                    <img src="img/pullman22.jpg" id="image" />
+                </p:imageSwitch>
+
+                <p:commandButton value="Crea Pullman"
+                                 action="#{creaPullmanController.prepareCreate()}">
+                </p:commandButton>
+                <p:commandButton value="Cancella Pullman"
+                                 action="#{cancellaPullmanController.prepareCreate()}">
+                </p:commandButton>
+                <p:commandButton value="Tutti i Pullman"
+                                 action="#{cercaPullmanController.tuttiPullmans()}">
+                </p:commandButton>
+                <p:commandButton value="Logout"
+                                 action="#{schermataInizialeController.logout()}">
+                </p:commandButton>
+            </h:form>
+        </f:view>
+    </h:body>
+</html>

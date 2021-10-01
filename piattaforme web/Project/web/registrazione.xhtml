@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Registrazione</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="./template.xhtml">
+            <ui:define name ="right_content">
+                <h:form>
+                    <style>
+                        body{
+                            background-image: url(img/background.png);
+                        }
+                    </style>
+
+                    <p:messages autoUpdate="true"/>
+                    <p:panelGrid id="grid" columns="2" styleClass="panel">
+
+                        <f:facet name="header">
+                            <img src="img/registrazione.png" />
+                        </f:facet>
+
+                        <p:row>
+                            <p:column colspan="1">
+                                <p:outputLabel for="username" value="Username: " style="font-weight:bold"/>                    
+                                <p:inputText id="username" value="#{registrazioneController.cliente.username}" required="true" label="Username"/>
+                                <p:message for="username" />
+                                <h:outputText value="#{registrazioneController.cliente.username}" />
+                            </p:column>
+                        </p:row>  
+
+                        <p:row>
+                            <p:column colspan="1">
+                                <p:outputLabel for="nome" value="Nome:" style="font-weight:bold"/>                    
+                                <p:inputText id="nome" value="#{registrazioneController.cliente.nome}" required="true" label="Nome"/>
+                                <p:message for="nome" />
+                                <h:outputText value="#{registrazioneController.cliente.nome}" />
+                            </p:column>
+                        </p:row>   
+
+                        <p:row>
+                            <p:column colspan="1">
+                                <p:outputLabel for="cognome" value="Cognome:" style="font-weight:bold"/>                    
+                                <p:inputText id="cognome" value="#{registrazioneController.cliente.cognome}" required="true" label="Cognome"/>
+                                <p:message for="cognome" />
+                                <h:outputText value="#{registrazioneController.cliente.cognome}" />
+                            </p:column>
+                        </p:row>
+
+                        <p:row>
+                            <p:column colspan="1">
+                                <p:outputLabel for="sesso" value="Sesso:" style="font-weight:bold" />
+                                <p:selectOneRadio id="sesso" value="#{registrazioneController.cliente.sesso}" required="true">
+                                    <f:selectItem itemLabel="M" itemValue="M" />
+                                    <f:selectItem itemLabel="F" itemValue="F" />
+                                </p:selectOneRadio>
+                            </p:column>
+                        </p:row>
+
+                        <p:row>
+                            <p:column>
+                                <p:outputLabel for="password" value="Password:" style="font-weight:bold" />
+                                <p:password id="password" value="#{registrazioneController.cliente.password}"
+                                            validatorMessage = "La password deve contenere almeno 4 caratteri" required="true">
+                                    <f:validateLength minimum="4"></f:validateLength>
+
+                                </p:password>
+
+                            </p:column>
+                        </p:row>
+
+                        <p:row>
+                            <p:column colspan="1">
+                                <p:outputLabel for="credito" value="Credito:" style="font-weight:bold" />
+                                <p:inputNumber id="credito" value="#{registrazioneController.cliente.creditoCliente}" symbol=" € " required="true"/>
+                                <p:slider for="credito" style="width: 200px" maxValue="500"/>
+                            </p:column>
+                        </p:row>
+
+                        <p:row>
+                            <p:column colspan="1">
+                                <p:column colspan="1">
+                                <p:outputLabel for="isAdmin" value="Admin:" style="font-weight:bold" />
+                                <p:selectOneRadio id="isAdmin" value="#{registrazioneController.isAdmin}" required="true">
+                                    <f:selectItem itemLabel="SI" itemValue="SI" />
+                                    <f:selectItem itemLabel="NO" itemValue="NO" />
+                                </p:selectOneRadio>
+                                 </p:column>
+                            </p:column>   
+                        </p:row>
+                    </p:panelGrid>
+                    <p:commandButton value="Salva" validateClient="true" action="#{registrazioneController.salvaCliente()}"/>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

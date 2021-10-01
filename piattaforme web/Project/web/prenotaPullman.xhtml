@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Prenota Pullman</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <ui:composition template="./template.xhtml">
+            <ui:define name = "right_content">
+                <h:form>
+
+                    <style>
+                        body{
+                            background-image: url(img/background.png);
+                        }
+                    </style>
+
+                    <p:messages id="messages" showDetail="true" autoUpdate="true"/>
+                    <p:dataTable id="tab" var="ordine" value="#{prenotaPullmanController.ordini}">
+                        <f:facet name="header">
+                            Pullman
+                        </f:facet>
+                        <p:column headerText="Numero Pullman">
+                            <p:outputLabel value="#{ordine.numeroPullman}"></p:outputLabel>
+                        </p:column>
+                        <p:column headerText="Partenza">
+                            <p:outputLabel value="#{ordine.partenza}"></p:outputLabel>
+                        </p:column>
+                        <p:column headerText="Arrivo">
+                            <p:outputLabel value="#{ordine.arrivo}"></p:outputLabel>
+                        </p:column>
+                        <p:column headerText="Data">
+                            <p:outputLabel value="#{ordine.giorno} / #{ordine.mese+1} / #{ordine.anno}"></p:outputLabel>
+                        </p:column>
+                        <p:column headerText="Costo">
+                            <p:outputLabel value="#{ordine.costo} €"></p:outputLabel>
+                        </p:column>
+                        <p:column headerText="Posti Disponibili">
+                            <p:outputLabel value="#{ordine.postiDisponibili}"></p:outputLabel>
+                        </p:column>
+                        <p:column headerText="Partenza-Arrivo">
+                            <p:outputLabel value="#{ordine.orarioPartenza} - #{ordine.orarioArrivo}"></p:outputLabel>
+                        </p:column>
+                        <p:column headerText="Prenota ora">
+                            <p:commandButton value = "Prenota" action = "#{prenotaPullmanController.prenotaPullman(ordine.numeroPullman)}">
+                            </p:commandButton>
+                        </p:column>
+
+
+                    </p:dataTable>
+
+                    <p:commandButton id="ricarica" value="Ricarica" type="button" />
+                    <p:overlayPanel id="popup" for="ricarica" hideEffect="fade" style="width:200px; height:200px;">
+                        <p:panelGrid id="grid" columns="2" styleClass="panel">
+                            <p:row>
+                                <p:column colspan="1">
+                                    <p:selectOneMenu id="Ricarica" value="#{ricaricaController.ricarica}">
+                                        <f:selectItem itemLabel="10 euro" itemValue="10"></f:selectItem>
+                                        <f:selectItem itemLabel ="20 euro" itemValue="20"></f:selectItem>
+                                        <f:selectItem itemLabel="50 euro" itemValue="50"></f:selectItem>
+                                        <f:selectItem itemLabel ="100 euro" itemValue="100"></f:selectItem>
+                                    </p:selectOneMenu>
+                                </p:column>
+                            </p:row>
+                        </p:panelGrid>
+                        <p:commandButton value = "Ricarica" action = "#{ricaricaController.ricaricare()}" ></p:commandButton>
+                    </p:overlayPanel>
+                    <p:commandButton value="Indietro" action="cercaPullman"></p:commandButton>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Cerca pullmans</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <f:view>
+            <h:form>
+                <style>
+                    body{
+                        background-image: url(img/background.png);
+                    }
+                </style>
+                <p:messages id="messages" showDetail="true" autoUpdate="true"/>
+                <div id="top-centre">
+                    <img src="img/logo.png"></img>
+                </div>
+                <p:growl id="mess" showDetail="true" />
+                <h:panelGrid columns="2" cellpadding="5">
+                    <p:outputLabel for="partenza" value="Partenza" />
+                    <p:selectOneMenu id="partenza" value="#{cercaPullmanController.partenza}" required="true">
+                        <f:selectItem itemLabel="Rende" itemValue="Rende"></f:selectItem>
+                        <f:selectItem itemLabel="San Fili" itemValue="San Fili"></f:selectItem>
+                        <f:selectItem itemLabel="Paola" itemValue="Paola"></f:selectItem>
+                        <f:selectItem itemLabel="Fisciano" itemValue="Fisciano"></f:selectItem>
+                        <f:selectItem itemLabel="Roma" itemValue="Roma"></f:selectItem>
+                        <f:selectItem itemLabel="Perugia" itemValue="Perugia"></f:selectItem>                        
+                        <f:selectItem itemLabel="Siena" itemValue="Siena"></f:selectItem>
+                        <f:selectItem itemLabel="Modena" itemValue="Modena"></f:selectItem>
+                        <f:selectItem itemLabel="Parma" itemValue="Parma"></f:selectItem>
+                        <f:selectItem itemLabel="Piacenza" itemValue="Piacenza"></f:selectItem>
+                        <f:selectItem itemLabel="Milano" itemValue="Milano"></f:selectItem>
+                        <f:selectItem itemLabel="Pavia" itemValue="Pavia"></f:selectItem>
+                        <f:selectItem itemLabel="Bologna" itemValue="Bologna"></f:selectItem>                        
+                        <f:selectItem itemLabel="Firenze" itemValue="Firenze"></f:selectItem>       
+                    </p:selectOneMenu>
+
+                    <p:outputLabel for="arrivo" value="Arrivo" />
+                    <p:selectOneMenu id="arrivo" value="#{cercaPullmanController.arrivo}" required="true">
+                        <f:selectItem itemLabel="Rende" itemValue="Rende"></f:selectItem>
+                        <f:selectItem itemLabel="San Fili" itemValue="San Fili"></f:selectItem>
+                        <f:selectItem itemLabel="Paola" itemValue="Paola"></f:selectItem>
+                        <f:selectItem itemLabel="Fisciano" itemValue="Fisciano"></f:selectItem>
+                        <f:selectItem itemLabel="Roma" itemValue="Roma"></f:selectItem>
+                        <f:selectItem itemLabel="Perugia" itemValue="Perugia"></f:selectItem>                        
+                        <f:selectItem itemLabel="Siena" itemValue="Siena"></f:selectItem>
+                        <f:selectItem itemLabel="Modena" itemValue="Modena"></f:selectItem>
+                        <f:selectItem itemLabel="Parma" itemValue="Parma"></f:selectItem>
+                        <f:selectItem itemLabel="Piacenza" itemValue="Piacenza"></f:selectItem>
+                        <f:selectItem itemLabel="Milano" itemValue="Milano"></f:selectItem>
+                        <f:selectItem itemLabel="Pavia" itemValue="Pavia"></f:selectItem>
+                        <f:selectItem itemLabel="Bologna" itemValue="Bologna"></f:selectItem>                        
+                        <f:selectItem itemLabel="Firenze" itemValue="Firenze"></f:selectItem>       
+                    </p:selectOneMenu>
+
+                    <p:outputLabel for="data" value="Data" />
+                    <p:calendar id="data" showButtonPanel="true" value="#{cercaPullmanController.data}" required="true" navigator="true"></p:calendar>
+
+                    <p:commandButton value="Cerca"
+                                     action="#{prenotaPullmanController.prepareCreate()}">
+                    </p:commandButton>
+                </h:panelGrid>
+            </h:form>
+            <h:form>
+                <p:commandButton value = "Indietro" action = "schermataIniziale"/>
+            </h:form>
+        </f:view>
+    </h:body>
+</html>

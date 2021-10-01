@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Cancella Pullman</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <ui:composition template="./template.xhtml">
+            <ui:define name = "right_content">
+                <h:form id="form">
+
+                    <style>
+                        body{
+                            background-image: url(img/background.png);
+                        }
+                    </style>
+
+                    <p:messages id="messages" showDetail="true" autoUpdate="true"/>
+                    <p:dataTable id="tab" var="pullman" value="#{cancellaPullmanController.pullmans}">
+                        <f:facet name="header">
+                            Pullmans
+                        </f:facet>
+                        <p:column headerText="Numero Pullman">
+                            <p:outputLabel value="#{pullman.numeroPullman}"></p:outputLabel>
+                        </p:column>
+                        <p:column headerText="Partenza">
+                            <p:outputLabel value="#{pullman.partenza}"></p:outputLabel>
+                        </p:column>
+                        <p:column headerText="Arrivo">
+                            <p:outputLabel value="#{pullman.arrivo}"></p:outputLabel>
+                        </p:column>
+                        <p:column headerText="Data">
+                            <p:outputLabel value="#{pullman.giorno} / #{pullman.mese+1} / #{pullman.anno}"></p:outputLabel>
+                        </p:column>
+                        <p:column headerText="Costo">
+                            <p:outputLabel value="#{pullman.costo}"></p:outputLabel>
+                        </p:column>
+                        <p:column headerText="Posti Disponibili">
+                            <p:outputLabel value="#{pullman.postiDisponibili}"></p:outputLabel>
+                        </p:column>
+                        <p:column headerText="Partenza-Arrivo">
+                            <p:outputLabel value="#{pullman.orarioPartenza} - #{pullman.orarioArrivo}"></p:outputLabel>
+                        </p:column>
+                        <p:column headerText="Cancella">
+                            <p:commandButton value = "Cancella" update=":form:tab" action ="#{cancellaPullmanController.cancellaPullmans(pullman.numeroPullman)}"></p:commandButton>
+                        </p:column>
+                    </p:dataTable>
+                    <p:commandButton value="Indietro" action="schermataAdmin"></p:commandButton>
+
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

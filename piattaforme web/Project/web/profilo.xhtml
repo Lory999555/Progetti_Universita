@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Profilo</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <ui:composition template="./template.xhtml">
+            <ui:define name = "right_content">
+                <h:form>
+
+                    <style>
+                        body{
+                            background-image: url(img/background.png);
+                        }
+                    </style>
+
+                    <p:messages id="messages" showDetail="true" autoUpdate="true"/>
+
+                    <p:panelGrid id="grid" columns="2" styleClass="panel">
+                        <f:facet name="header">
+                            INFORMAZIONI
+                        </f:facet>
+
+                        <p:row>
+                            <p:column colspan="1">
+                                <p:outputLabel for="username" value="Username: " style="font-weight:bold"/>                    
+                                <p:outputLabel id="username" value="#{profiloController.c.username}"/>
+                            </p:column>
+                        </p:row>  
+
+                        <p:row>
+                            <p:column colspan="1">
+                                <p:outputLabel for="nome" value="Nome: " style="font-weight:bold"/>                    
+                                <p:outputLabel id="nome" value="#{profiloController.c.nome}"/>
+                            </p:column>
+                        </p:row>
+
+                        <p:row>
+                            <p:column colspan="1">
+                                <p:outputLabel for="cognome" value="Cognome: " style="font-weight:bold"/>                    
+                                <p:outputLabel id="cognome" value="#{profiloController.c.cognome}"/>
+                            </p:column>
+                        </p:row>
+
+                        <p:row>
+                            <p:column colspan="1">
+                                <p:outputLabel for="sesso" value="Sesso: " style="font-weight:bold"/>                    
+                                <p:outputLabel id="sesso" value="#{profiloController.c.sesso}"/>
+                            </p:column>
+                        </p:row>
+
+                        <p:row>
+                            <p:column colspan="1">
+                                <p:outputLabel for="credito" value="Credito: €" style="font-weight:bold"/>                    
+                                <p:outputLabel id="credito" value="#{profiloController.c.creditoCliente}"/>
+                            </p:column>
+                        </p:row>
+                    </p:panelGrid>
+
+                    <p:dataTable id="tab" var="ordine" value="#{profiloController.ordini}">
+                        <f:facet name="header">
+                            Ordini effettuati
+                        </f:facet>
+                        <p:column headerText="Numero Pullman">
+                            <h:outputText value="#{ordine.numeroPullman}"></h:outputText>
+                        </p:column>
+                        <p:column headerText="Partenza">
+                            <h:outputText value="#{ordine.partenza}"></h:outputText>
+                        </p:column>
+                        <p:column headerText="Arrivo">
+                            <h:outputText value="#{ordine.arrivo}"></h:outputText>
+                        </p:column>
+                        <p:column headerText="Data">
+                            <h:outputText value="#{ordine.giorno} / #{ordine.mese+1} / #{ordine.anno}"></h:outputText>
+                        </p:column>
+                        <p:column headerText="Costo">
+                            <h:outputText value="#{ordine.costo}"></h:outputText>
+                        </p:column>
+                        <p:column headerText="Cancella">
+                            <h:commandLink value="Cancella" action="#{profiloController.cancellaPullmans(ordine.numeroPullman)}" />                      
+                        </p:column>
+                    </p:dataTable>
+                    <p:commandButton value="Indietro" action="schermataIniziale"></p:commandButton>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
